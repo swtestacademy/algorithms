@@ -1,2 +1,2 @@
 # Data Structures and Algorithms in JAVA
-Data structures and algorithm examples in JAVA.
+Data structures and algorithms examples in JAVA.
