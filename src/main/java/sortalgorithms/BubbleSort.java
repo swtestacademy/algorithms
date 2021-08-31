@@ -21,7 +21,8 @@ public class BubbleSort {
 
     }
 
-    public static int[] ascendingBubbleSort(int[] array) {
+    public static int[] ascendingBubbleSort(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
             for (int index = 0; index < indexTobeSorted; index++) {
                 if (array[index] > array[index + 1]) {
@@ -32,7 +33,8 @@ public class BubbleSort {
         return array;
     }
 
-    public static int[] descendingBubbleSort(int[] array) {
+    public static int[] descendingBubbleSort(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
             for (int index = 0; index < indexTobeSorted; index++) {
                 if (array[index] < array[index + 1]) {

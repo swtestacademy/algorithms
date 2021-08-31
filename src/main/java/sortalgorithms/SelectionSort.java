@@ -21,7 +21,8 @@ public class SelectionSort {
         System.out.println("Descending Sorted Array: " + Arrays.toString(descendingSelectionSort(unsortedArray)));
     }
 
-    public static int[] ascendingSelectionSort(int[] array) {
+    public static int[] ascendingSelectionSort(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
             int largest = 0;
             for (int index = 0; index < indexTobeSorted; index++) {
@@ -34,7 +35,8 @@ public class SelectionSort {
         return array;
     }
 
-    public static int[] descendingSelectionSort(int[] array) {
+    public static int[] descendingSelectionSort(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
             int smallest = 0;
             for (int index = 0; index < indexTobeSorted; index++) {

@@ -10,16 +10,17 @@ import java.util.Arrays;
 public class InsertionSort {
     public static void main(String[] args) {
         int[] unsortedArray = { 18, 32, -11, 6, 68, 2, -34 };
-
         System.out.println("Ascending Sorted Array: " + Arrays.toString(ascendingInsertionSort(unsortedArray)));
         System.out.println("Ascending Sorted Array Simpler: " + Arrays.toString(ascendingInsertionSortSimpler(unsortedArray)));
         System.out.println("Descending Sorted Array: " + Arrays.toString(descendingInsertionSort(unsortedArray)));
     }
 
-    public static int[] ascendingInsertionSort(int[] array) {
+    public static int[] ascendingInsertionSort(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexToBeSorted = 1; indexToBeSorted < array.length; indexToBeSorted++) {
             int elementToBeSorted = array[indexToBeSorted];
-            for (int i = indexToBeSorted; i > 0; i--) {
+            int i;
+            for (i = indexToBeSorted; i > 0; i--) {
                 if (elementToBeSorted < array[i - 1]) {
                     array[i] = array[i - 1];
                     if (i == 1) {
@@ -34,7 +35,8 @@ public class InsertionSort {
         return array;
     }
 
-    public static int[] ascendingInsertionSortSimpler(int[] array) {
+    public static int[] ascendingInsertionSortSimpler(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexToBeSorted = 1; indexToBeSorted < array.length; indexToBeSorted++) {
             int elementToBeSorted = array[indexToBeSorted];
             int i;
@@ -46,7 +48,8 @@ public class InsertionSort {
         return array;
     }
 
-    public static int[] descendingInsertionSort(int[] array) {
+    public static int[] descendingInsertionSort(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexToBeSorted = 1; indexToBeSorted < array.length; indexToBeSorted++) {
             int elementToBeSorted = array[indexToBeSorted];
             int i;
@@ -56,13 +59,5 @@ public class InsertionSort {
             array[i] = elementToBeSorted;
         }
         return array;
-    }
-
-    public static void swap(int[] array, int firstIndex, int secondIndex) {
-        if (firstIndex != secondIndex) {
-            int temp = array[firstIndex];
-            array[firstIndex] = array[secondIndex];
-            array[secondIndex] = temp;
-        }
     }
 }
