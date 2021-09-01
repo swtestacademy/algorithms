@@ -15,11 +15,12 @@ public class InsertionSort {
     public static void main(String[] args) {
         int[] unsortedArray = { 18, 32, -11, 6, 68, 2, -34 };
         System.out.println("Ascending Sorted Array: " + Arrays.toString(ascendingInsertionSort(unsortedArray)));
-        System.out.println("Ascending Sorted Array Simpler: " + Arrays.toString(ascendingInsertionSortSimple(unsortedArray)));
+        System.out.println("Ascending Sorted Array (while): " + Arrays.toString(ascendingInsertionSortWhile(unsortedArray)));
+        System.out.println("Ascending Sorted Array (longer): " + Arrays.toString(ascendingInsertionSortLonger(unsortedArray)));
         System.out.println("Descending Sorted Array: " + Arrays.toString(descendingInsertionSort(unsortedArray)));
     }
 
-    public static int[] ascendingInsertionSortSimple(int[] unsortedArray) {
+    public static int[] ascendingInsertionSort(int[] unsortedArray) {
         int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexStartingToSort = 1; indexStartingToSort < array.length; indexStartingToSort++) {
             int valueStartingToSort = array[indexStartingToSort];
@@ -32,20 +33,21 @@ public class InsertionSort {
         return array;
     }
 
-    public static int[] descendingInsertionSort(int[] unsortedArray) {
+    public static int[] ascendingInsertionSortWhile(int[] unsortedArray) {
         int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexStartingToSort = 1; indexStartingToSort < array.length; indexStartingToSort++) {
             int valueStartingToSort = array[indexStartingToSort];
-            int i;
-            for (i = indexStartingToSort; i > 0 && valueStartingToSort > array[i - 1]; i--) {
+            int i = indexStartingToSort;
+            while (i > 0 && valueStartingToSort < array[i - 1]) {
                 array[i] = array[i - 1];
+                i--;
             }
             array[i] = valueStartingToSort;
         }
         return array;
     }
 
-    public static int[] ascendingInsertionSort(int[] unsortedArray) {
+    public static int[] ascendingInsertionSortLonger(int[] unsortedArray) {
         int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         for (int indexStartingToSort = 1; indexStartingToSort < array.length; indexStartingToSort++) {
             int valueStartingToSort = array[indexStartingToSort];
@@ -61,6 +63,19 @@ public class InsertionSort {
                     break;
                 }
             }
+        }
+        return array;
+    }
+
+    public static int[] descendingInsertionSort(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
+        for (int indexStartingToSort = 1; indexStartingToSort < array.length; indexStartingToSort++) {
+            int valueStartingToSort = array[indexStartingToSort];
+            int i;
+            for (i = indexStartingToSort; i > 0 && valueStartingToSort > array[i - 1]; i--) {
+                array[i] = array[i - 1];
+            }
+            array[i] = valueStartingToSort;
         }
         return array;
     }
