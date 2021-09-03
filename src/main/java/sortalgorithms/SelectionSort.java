@@ -1,5 +1,7 @@
 package sortalgorithms;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Arrays;
 
 /**
@@ -17,12 +19,13 @@ public class SelectionSort {
     public static void main(String[] args) {
         int[] unsortedArray = { 18, 32, -11, 6, 68, 2, -34 };
 
-        System.out.println("Ascending Sorted Array: " + Arrays.toString(ascendingSelectionSort(unsortedArray)));
-        System.out.println("Descending Sorted Array: " + Arrays.toString(descendingSelectionSort(unsortedArray)));
+        System.out.println("Ascending Sorted Array: " + Arrays.toString(ascendingSelectionSort(unsortedArray)) + "\n");
+        System.out.println("Descending Sorted Array: " + Arrays.toString(descendingSelectionSort(unsortedArray)) + "\n");
     }
 
     public static int[] ascendingSelectionSort(int[] unsortedArray) {
         int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
+        Instant start = Instant.now();
         for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
             int largest = 0;
             for (int index = 0; index < indexTobeSorted; index++) {
@@ -32,11 +35,14 @@ public class SelectionSort {
             }
             swap(array, largest, indexTobeSorted);
         }
+        Instant end = Instant.now();
+        System.out.println("Elapsed time of ascendingSelectionSort: " + Duration.between(start, end).toNanos());
         return array;
     }
 
     public static int[] descendingSelectionSort(int[] unsortedArray) {
         int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
+        Instant start = Instant.now();
         for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
             int smallest = 0;
             for (int index = 0; index < indexTobeSorted; index++) {
@@ -46,6 +52,8 @@ public class SelectionSort {
             }
             swap(array, smallest, indexTobeSorted);
         }
+        Instant end = Instant.now();
+        System.out.println("Elapsed time of descendingSelectionSort: " + Duration.between(start, end).toNanos());
         return array;
     }
 
