@@ -19,13 +19,15 @@ public class BubbleSort {
         int[] unsortedArray = { 18, 32, -11, 6, 68, 2, -34 };
 
         System.out.println("Ascending Sorted Array: " + Arrays.toString(ascendingBubbleSort(unsortedArray)) + "\n");
+        System.out.println("Optimized Ascending Sorted Array: " + Arrays.toString(optimizedAscendingBubbleSort(unsortedArray)) + "\n");
         System.out.println("Descending Sorted Array: " + Arrays.toString(descendingBubbleSort(unsortedArray)) + "\n");
-
     }
 
     public static int[] ascendingBubbleSort(int[] unsortedArray) {
         int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         Instant start = Instant.now();
+
+        //Bubble Sort Implementation in Ascending Order
         for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
             for (int index = 0; index < indexTobeSorted; index++) {
                 if (array[index] > array[index + 1]) {
@@ -33,14 +35,40 @@ public class BubbleSort {
                 }
             }
         }
+
         Instant end = Instant.now();
         System.out.println("Elapsed time of ascendingBubbleSort: " + Duration.between(start, end).toNanos());
+        return array;
+    }
+
+    public static int[] optimizedAscendingBubbleSort(int[] unsortedArray) {
+        int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
+        Instant start = Instant.now();
+        boolean isSwapped = false;
+
+        //Optimized Bubble Sort Implementation in Ascending Order
+        for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
+            for (int index = 0; index < indexTobeSorted; index++) {
+                if (array[index] > array[index + 1]) {
+                    swap(array, index, index + 1);
+                    isSwapped = true;
+                }
+            }
+            //Nothing swapped that means array already sorted. Why should we do more sorting then?
+            //We finish the outer iteration with break.
+            if (!isSwapped) break;
+        }
+
+        Instant end = Instant.now();
+        System.out.println("Elapsed time of optimized ascendingBubbleSort: " + Duration.between(start, end).toNanos());
         return array;
     }
 
     public static int[] descendingBubbleSort(int[] unsortedArray) {
         int[] array = Arrays.copyOf(unsortedArray, unsortedArray.length);
         Instant start = Instant.now();
+
+        //Bubble Sort Implementation in Descending Order
         for (int indexTobeSorted = array.length - 1; indexTobeSorted > 0; indexTobeSorted--) {
             for (int index = 0; index < indexTobeSorted; index++) {
                 if (array[index] < array[index + 1]) {
@@ -48,6 +76,7 @@ public class BubbleSort {
                 }
             }
         }
+
         Instant end = Instant.now();
         System.out.println("Elapsed time of descendingBubbleSort: " + Duration.between(start, end).toNanos());
         return array;
